@@ -16,27 +16,27 @@ import Image from "next/image"; // Import do next/image
 const navItems = [
   { name: "Minha Árvore", icon: TreePine, href: "/home" },
   { name: "Eventos Familiares", icon: Calendar, href: "/" },
-  { name: "Membros da Família", icon: Users, href: "/membrosFamilia", active: true },
+  { name: "Membros da Família", icon: Users, href: "/membrosFamilia"},
   { name: "Recordações", icon: ImageIcon, href: "/" },
   { name: "Ajuda", icon: HelpCircle, href: "/" },
 ];
 
 export default function Sidebar() {
-  const [expanded, setExpanded] = useState(false);
-
+  const [expanded, setExpanded] = useState(true);
+  
   return (
     <aside
-      onMouseEnter={() => setExpanded(true)}
-      onMouseLeave={() => setExpanded(false)}
-      className={`h-screen bg-white shadow-md transition-all duration-500 flex flex-col
-        ${expanded ? "w-56" : "w-16"}`}
-    >
+   /*   onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)} */
+      className={`fixed top-0 left-0 h-screen bg-white shadow-md transition-all duration-500 flex flex-col z-50
+     ${expanded ? "w-56" : "w-16"}`}
+    > 
       {/* Logo */}
       <div className="flex items-center justify-center p-4">
         {expanded ? (
           <div className="flex items-center gap-2">
             <Image
-              src="/logo_trama.png" // Coloque o arquivo dentro da pasta public/
+              src="/logo_trama.png"
               alt="Logo Trama"
               width={40}
               height={40}
@@ -63,8 +63,7 @@ export default function Sidebar() {
             <Link
               key={index}
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2 rounded-lg text-green-800 hover:bg-green-50 transition
-                ${item.active ? "bg-green-100 text-green-900" : ""}`}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg text-green-800 hover:bg-green-50 transition`}
             >
               <Icon className="w-5 h-5 shrink-0" />
               {expanded && <span className="text-sm">{item.name}</span>}
