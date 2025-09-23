@@ -28,7 +28,7 @@ export default function Sidebar() {
     <aside
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
-      className={`h-screen bg-white shadow-md transition-all duration-100 flex flex-col
+      className={`h-screen bg-white shadow-md transition-all duration-500 flex flex-col
         ${expanded ? "w-56" : "w-16"}`}
     >
       {/* Logo */}

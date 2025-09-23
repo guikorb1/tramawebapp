@@ -16,7 +16,7 @@ const membrosData: Membro[] = membros;
 export default function TabelaFamilia() {
   const [pagina, setPagina] = useState(1);
   const [busca, setBusca] = useState("");
-  const registrosPorPagina = 5;
+  const registrosPorPagina = 10;
 
   // Filtragem
   const membrosFiltrados = membrosData.filter((membro) =>
