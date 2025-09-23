@@ -3,13 +3,13 @@ import TabelaMembros from "@/components/TabelaFamilia";
 import { User } from "lucide-react";
 import membros from "@/data/membros.json";
 
-export default function HomeLayout({ children }: { children: React.ReactNode }) {
+export default function MembrosFamilia({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
 
       {/* Área principal */}
-      <div className="flex-1 bg-gray-100 p-8 flex flex-col gap-6">
+      <div className="flex-1 bg-gray-100 p-8 flex flex-col gap-6 ml-16 md:ml-56 transition-all duration-500">
         
         {/* Header */}
         <header className="flex items-center justify-between">
