@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 import Link from "next/link";
-import Image from "next/image"; // Import do next/image
+import Image from "next/image"; 
 
 const navItems = [
   { name: "Minha Árvore", icon: TreePine, href: "/home" },
@@ -75,7 +75,7 @@ export default function Sidebar() {
       {/* Rodapé */}
       <div className="mt-auto px-2 mb-6">
         <Link
-          href="#"
+          href="/"
           className="flex items-center gap-3 px-3 py-2 rounded-lg text-green-800 hover:bg-green-50 transition"
         >
           <MessageSquare className="w-5 h-5 shrink-0" />
