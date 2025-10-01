@@ -1,7 +1,9 @@
-import { useState } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import { format, parse, startOfWeek, getDay } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
+import {ptBR} from "date-fns/locale/pt-BR";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const locales = {
@@ -16,46 +18,80 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
+type Evento = {
+  id: number;
+  title: string;
+  start: string | Date;
+  end: string | Date;
+};
+
 export default function CalendarioEventos() {
-  const [eventos] = useState([
-    {
-      title: "Aniversário da Ana",
-      start: new Date(2025, 8, 25, 19, 0), // 25/09/2025 às 19h
-      end: new Date(2025, 8, 25, 23, 0),
-    },
-    {
-      title: "Encontro de família",
-      start: new Date(2025, 9, 5, 12, 0), // 05/10/2025
-      end: new Date(2025, 9, 5, 18, 0),
-    },
-    {
-      title: "Viagem com primos",
-      start: new Date(2025, 11, 20), // 20/12/2025
-      end: new Date(2025, 11, 25),
-    },
-  ]);
+  const [eventos, setEventos] = useState<Evento[]>([]);
+
+  useEffect(() => {
+    async function fetchEventos() {
+      const res = await fetch("/api/events");
+      const data: Evento[] = await res.json();
+
+      // Converter datas de string para Date
+      const eventosConvertidos = data.map((ev) => ({
+        ...ev,
+        start: new Date(ev.start),
+        end: new Date(ev.end),
+      }));
+
+      setEventos(eventosConvertidos);
+    }
+
+    fetchEventos();
+  }, []);
 
   return (
-    <div className="p-6">
+    <div className="flex flex-col items-center pl-50">
       <h1 className="text-2xl font-bold mb-4 text-center">
         📅 Eventos da Família
       </h1>
-      <Calendar
-        localizer={localizer}
-        events={eventos}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500 }}
-        messages={{
-          next: "Próximo",
-          previous: "Anterior",
-          today: "Hoje",
-          month: "Mês",
-          week: "Semana",
-          day: "Dia",
-          agenda: "Agenda",
-        }}
-      />
+
+      <div className="bg-white rounded-2xl shadow p-4 w-full max-w-5xl">
+        <Calendar
+          localizer={localizer}
+          events={eventos}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: "70vh", minHeight: 400 }}
+          messages={{
+            next: "Próximo",
+            previous: "Anterior",
+            today: "Hoje",
+            month: "Mês",
+            week: "Semana",
+            day: "Dia",
+            agenda: "Agenda",
+          }}
+          eventPropGetter={(event) => {
+            let backgroundColor = "#2563eb"; // azul padrão
+            if (event.title.toLowerCase().includes("aniversário"))
+              backgroundColor = "#16a34a"; // verde
+            if (event.title.toLowerCase().includes("encontro"))
+              backgroundColor = "#f59e0b"; // amarelo
+            if (event.title.toLowerCase().includes("viagem"))
+              backgroundColor = "#dc2626"; // vermelho
+            return {
+              style: {
+                backgroundColor,
+                color: "white",
+                borderRadius: "8px",
+                padding: "2px 6px",
+              },
+            };
+          }}
+          onSelectEvent={(event) =>
+            alert(
+              `📌 Evento: ${event.title}\n📅 Início: ${event.start.toLocaleString()}\n📅 Fim: ${event.end.toLocaleString()}`
+            )
+          }
+        />
+      </div>
     </div>
   );
 }

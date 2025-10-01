@@ -14,11 +14,11 @@ import Link from "next/link";
 import Image from "next/image"; 
 
 const navItems = [
-  { name: "Minha Árvore", icon: TreePine, href: "/home" },
-  { name: "Eventos Familiares", icon: Calendar, href: "/" },
+  { name: "Minha Árvore", icon: TreePine, href: "/" },
+  { name: "Eventos Familiares", icon: Calendar, href: "/eventos" },
   { name: "Membros da Família", icon: Users, href: "/membrosFamilia"},
   { name: "Recordações", icon: ImageIcon, href: "/" },
-  { name: "Ajuda", icon: HelpCircle, href: "/" },
+  { name: "Ajuda", icon: HelpCircle, href: "/ajuda" },
 ];
 
 export default function Sidebar() {
