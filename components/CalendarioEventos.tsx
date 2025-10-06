@@ -48,8 +48,9 @@ export default function CalendarioEventos() {
 
   return (
     <div className="flex flex-col items-center pl-50">
-      <h1 className="text-2xl font-bold mb-4 text-center">
-        📅 Eventos da Família
+      <h1 className="text-2xl font-bold mb-4
+       text-center">
+        Eventos da Família
       </h1>
 
       <div className="bg-white rounded-2xl shadow p-4 w-full max-w-5xl">

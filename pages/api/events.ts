@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-// Dados (futuramente podem vir de um banco de dados)
+// Dados
 const eventos = [
   {
     id: 1,
@@ -30,12 +30,12 @@ const eventos = [
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
-    // Retorna lista de eventos
+   
     return res.status(200).json(eventos);
   } else if (req.method === "POST") {
-    // Exemplo: salvar evento enviado no body
+   
     const novoEvento = req.body;
-    // Aqui você poderia salvar no banco de dados
+    // Aqui poderia salvar no banco de dados
     return res
       .status(201)
       .json({ message: "Evento criado com sucesso", evento: novoEvento });

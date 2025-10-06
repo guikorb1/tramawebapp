@@ -17,7 +17,7 @@ const navItems = [
   { name: "Minha Árvore", icon: TreePine, href: "/" },
   { name: "Eventos Familiares", icon: Calendar, href: "/eventos" },
   { name: "Membros da Família", icon: Users, href: "/membrosFamilia"},
-  { name: "Recordações", icon: ImageIcon, href: "/" },
+  { name: "Recordações", icon: ImageIcon, href: "/recordacoes" },
   { name: "Ajuda", icon: HelpCircle, href: "/ajuda" },
 ];
 

@@ -1,7 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search } from "lucide-react";
-import membros from "@/data/membros.json";
 
 interface Membro {
   nome: string;
@@ -11,12 +10,26 @@ interface Membro {
   pais: string;
 }
 
-const membrosData: Membro[] = membros;
-
 export default function TabelaFamilia() {
+  const [membrosData, setMembrosData] = useState<Membro[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const [pagina, setPagina] = useState(1);
   const [busca, setBusca] = useState("");
   const registrosPorPagina = 10;
+
+  useEffect(() => {
+    fetch("/data/membros.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setMembrosData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Erro ao carregar membros:", err);
+        setLoading(false);
+      });
+  }, []);
 
   // Filtragem
   const membrosFiltrados = membrosData.filter((membro) =>
@@ -50,7 +63,7 @@ export default function TabelaFamilia() {
             />
           </div>
 
-          {/* Dropdown ordenação (aqui só visual, mas dá pra implementar lógica depois) */}
+          {/* Dropdown ordenação */}
           <select className="border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
             <option>Novo</option>
             <option>Antigo</option>
@@ -62,28 +75,32 @@ export default function TabelaFamilia() {
 
       {/* Tabela */}
       <div className="overflow-x-auto">
-        <table className="w-full text-sm text-left text-gray-700">
-          <thead className="text-gray-500 border-b">
-            <tr>
-              <th className="py-3 px-4">Nome</th>
-              <th className="py-3 px-4">Cidade</th>
-              <th className="py-3 px-4">Número</th>
-              <th className="py-3 px-4">Email</th>
-              <th className="py-3 px-4">País</th>
-            </tr>
-          </thead>
-          <tbody>
-            {membrosPaginados.map((membro, idx) => (
-              <tr key={idx} className="border-b hover:bg-gray-50">
-                <td className="py-3 px-4">{membro.nome}</td>
-                <td className="py-3 px-4">{membro.cidade}</td>
-                <td className="py-3 px-4">{membro.numero}</td>
-                <td className="py-3 px-4">{membro.email}</td>
-                <td className="py-3 px-4">{membro.pais}</td>
+        {loading ? (
+          <p className="text-center py-6 text-gray-500 animate-pulse">Carregando membros...</p>
+        ) : (
+          <table className="w-full text-sm text-left text-gray-700">
+            <thead className="text-gray-500 border-b">
+              <tr>
+                <th className="py-3 px-4">Nome</th>
+                <th className="py-3 px-4">Cidade</th>
+                <th className="py-3 px-4">Número</th>
+                <th className="py-3 px-4">Email</th>
+                <th className="py-3 px-4">País</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {membrosPaginados.map((membro, idx) => (
+                <tr key={idx} className="border-b hover:bg-gray-50">
+                  <td className="py-3 px-4">{membro.nome}</td>
+                  <td className="py-3 px-4">{membro.cidade}</td>
+                  <td className="py-3 px-4">{membro.numero}</td>
+                  <td className="py-3 px-4">{membro.email}</td>
+                  <td className="py-3 px-4">{membro.pais}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
 
       {/* Paginação */}

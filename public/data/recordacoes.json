@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "titulo": "Casamento dos Avós",
+    "descricao": "Um dos momentos mais marcantes da nossa família ❤️",
+    "imagem": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    "data": "12/05/1980",
+    "pessoas": ["José Silva", "Maria Souza"],
+    "local": "Igreja São Pedro - São Paulo, SP",
+    "tipo": "Evento"
+  },
+  {
+    "id": 2,
+    "titulo": "Primeira Casa da Família",
+    "descricao": "O começo de tudo, onde muitas histórias começaram.",
+    "imagem": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    "data": "03/08/1985",
+    "pessoas": ["José Silva", "Maria Souza"],
+    "local": "Bairro das Flores - Campinas, SP",
+    "tipo": "Lugar"
+  },
+  {
+    "id": 3,
+    "titulo": "Aniversário da Ana",
+    "descricao": "Uma festa cheia de alegria e união 🎉",
+    "imagem": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e",
+    "data": "21/07/2001",
+    "pessoas": ["Ana Silva", "João Silva", "Lucas Souza"],
+    "local": "Salão da Família - Campinas, SP",
+    "tipo": "Festa"
+  },
+  {
+    "id": 4,
+    "titulo": "Formatura do João",
+    "descricao": "Um dia de orgulho e conquistas para toda a família 🎓",
+    "imagem": "https://images.unsplash.com/photo-1517487881594-2787fef5ebf7",
+    "data": "15/12/2019",
+    "pessoas": ["João Silva"],
+    "local": "Universidade Federal de São Carlos",
+    "tipo": "Conquista"
+  },
+  {
+    "id": 5,
+    "titulo": "Viagem à Praia",
+    "descricao": "Momentos inesquecíveis de diversão e descanso em família 🌊",
+    "imagem": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    "data": "10/01/2005",
+    "pessoas": ["Ana Silva", "Lucas Souza"],
+    "local": "Praia de Ubatuba - SP",
+    "tipo": "Viagem"
+  }
+]
