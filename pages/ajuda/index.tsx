@@ -14,7 +14,7 @@ export default function Ajuda() {
 
         <Sidebar />
 
-        <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">
+        <h1 className="text-3xl font-bold mb-6 text-center font-bold">
           Ajuda
         </h1>
         <p className="text-lg text-gray-700 max-w-2xl text-center mb-8">

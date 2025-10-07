@@ -27,7 +27,7 @@ export default function Recordacoes() {
       <div className="max-w-5xl mx-auto pt-2">
         <div className="flex justify-between items-center mb-10">
           <div>
-            <h1 className="text-4xl font-bold text-green-500 mb-2">Recordações</h1>
+            <h1 className="text-4xl font-bold mb-2">Recordações</h1>
             <p className="">
               Reviva os momentos mais marcantes da sua família 🌿
             </p>
@@ -55,10 +55,10 @@ export default function Recordacoes() {
               </div>
 
               <div className="p-4">
-                <h2 className="text-xl font-semibold text-green-400 mb-1">
+                <h2 className="text-xl font-semibold text-green-600 mb-1">
                   {memoria.titulo}
                 </h2>
-                <p className="text-gray-300 text-sm mb-3">{memoria.descricao}</p>
+                <p className="text-gray-600 text-sm mb-3">{memoria.descricao}</p>
 
                 <div className="flex items-center justify-between text-gray-400 text-sm">
                   <div className="flex items-center gap-1">
