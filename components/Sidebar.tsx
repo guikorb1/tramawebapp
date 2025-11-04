@@ -7,7 +7,7 @@ import {
   Users,
   Image as ImageIcon,
   HelpCircle,
-  MessageSquare
+  User
 } from "lucide-react";
 
 import Link from "next/link";
@@ -15,15 +15,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 const navItems = [
-  { name: "Minha Árvore", icon: TreePine, href: "/" },
-  { name: "Eventos Familiares", icon: Calendar, href: "/eventos" },
-  { name: "Membros da Família", icon: Users, href: "/membrosFamilia"},
+  { name: "Árvore", icon: TreePine, href: "/" },
+  { name: "Eventos", icon: Calendar, href: "/eventos" },
+  { name: "Membros", icon: Users, href: "/membrosFamilia" },
   { name: "Recordações", icon: ImageIcon, href: "/recordacoes" },
   { name: "Ajuda", icon: HelpCircle, href: "/ajuda" },
 ];
 
 export default function Sidebar() {
-  const [expanded, setExpanded] = useState(true);
   const router = useRouter();
 
   function handleLogout() {
@@ -32,66 +31,65 @@ export default function Sidebar() {
   }
 
   return (
-    <aside
-      /*   onMouseEnter={() => setExpanded(true)}
-      onMouseLeave={() => setExpanded(false)} */
-      className={`fixed top-0 left-0 h-screen bg-white shadow-md transition-all duration-500 flex flex-col z-50
-     ${expanded ? "w-56" : "w-16"}`}
-    >
-      {/* Logo */}
-      <div className="flex items-center justify-center p-4">
-        {expanded ? (
-          <div className="flex items-center gap-2">
-            <Image
-              src="/logo_trama.png"
-              alt="Logo Trama"
-              width={40}
-              height={40}
-              className="rounded"
-            />
-            <span className="text-2xl font-bold text-green-800 select-none">Trama</span>
-          </div>
-        ) : (
+    <>
+      {/* Top bar - fixed */}
+      <div className="fixed top-0 left-0 right-0 h-12 bg-white shadow-sm z-50 flex items-center justify-between px-4">
+        {/* Logo - lado esquerdo */}
+        <div className="flex items-center gap-3">
           <Image
             src="/logo_trama.png"
-            alt="Logo Trama"
+            alt="Logo"
             width={32}
             height={32}
             className="rounded"
           />
-        )}
+        </div>
+
+        {/* Ícones - lado direito */}
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center">
+            <User className="w-5 h-5 text-gray-700" />
+          </div>
+        </div>
       </div>
 
-      {/* Menu */}
-      <nav className="flex flex-col gap-2 px-2">
-        {navItems.map((item, index) => {
+      {/* Bottom bar - fixed with navigation icons */}
+      <nav className="fixed bottom-0 left-0 right-0 h-14 bg-white shadow-md z-50 flex items-center justify-around">
+        {navItems.map((item, idx) => {
           const Icon = item.icon;
+          const isActive = router.pathname === item.href;
           return (
             <Link
-              key={index}
+              key={idx}
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2 rounded-lg text-green-800 hover:bg-green-50 transition`}
+              className={`flex flex-col items-center justify-center p-2 ${
+                isActive ? 'text-green-700' : 'text-gray-700'
+              }`}
             >
-              <Icon className="w-5 h-5 shrink-0" />
-              {expanded && <span className="text-sm">{item.name}</span>}
+              <Icon className="w-6 h-6" />
+              <span className="text-[10px]">{item.name}</span>
             </Link>
           );
         })}
-      </nav>
 
-      {/* Rodapé */}
-      <div className="mt-auto px-2 mb-6 flex flex-col gap-2">
-        <button
-          onClick={handleLogout}
-          className="flex items-center gap-3 px-3 py-2 rounded-lg text-red-700 hover:bg-red-50 transition w-full mt-1"
-          style={{ outline: 'none', border: 'none', background: 'none', cursor: 'pointer' }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1" />
+        {/* Logout icon */}
+        <button onClick={handleLogout} className="p-2 text-red-600">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1"
+            />
           </svg>
-          {expanded && <span className="text-sm">Sair</span>}
         </button>
-      </div>
-    </aside>
+      </nav>
+    </>
   );
 }

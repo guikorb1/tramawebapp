@@ -9,4 +9,34 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+/* Espaço reservado para top e bottom bars fixas */
+:root {
+  --top-bar-height: 48px;
+  --bottom-bar-height: 56px;
+}
+
+body {
+  padding-top: var(--top-bar-height);
+  padding-bottom: calc(var(--bottom-bar-height) + env(safe-area-inset-bottom));
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+  * {
+    user-select: none;
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Melhor zoom handling para a árvore */
+  #tree {
+    touch-action: pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+  }
 }

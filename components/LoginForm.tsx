@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export default function LoginForm() {
   const [user, setUser] = useState('');
@@ -35,6 +36,9 @@ export default function LoginForm() {
 
   return (
     <div className="login-form-container">
+      <div style={{display:'flex',justifyContent:'center',marginBottom:12}}>
+        <Image src="/logo_trama.png" alt="Logo" width={72} height={72} />
+      </div>
       <h1 className="login-title">Bem Vindo!</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="user" className="login-label">Usuário</label>

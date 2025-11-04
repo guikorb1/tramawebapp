@@ -1,32 +1,27 @@
 .login-page-container {
   display: flex;
   min-height: 100vh;
-}
-
-.login-left {
-  flex: 1;
-  background: url('/background.png') no-repeat center center;
-  background-size: cover;
-  display: flex;
   align-items: center;
   justify-content: center;
+  padding: 24px;
+  background: var(--background);
 }
 
 .login-right {
-  flex: 1;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: transparent;
 }
 
 .login-form-container {
   width: 100%;
-  max-width: 350px;
+  max-width: 420px;
   background: #fff;
-  padding: 32px 24px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 28px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
   display: flex;
   flex-direction: column;
   align-items: stretch;

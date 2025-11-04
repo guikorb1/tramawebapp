@@ -73,7 +73,7 @@ export default function MinhaArvore() {
           // não mexer em escala aqui — usar padrão
         });
 
-        nodes.forEach((node) => {
+        nodes.forEach((node: { id: number; backgroundColor: string }) => {
           const el = document.querySelector<HTMLDivElement>(`[data-id="${node.id}"]`);
           if (el) {
             el.style.backgroundColor = node.backgroundColor;
@@ -100,15 +100,16 @@ export default function MinhaArvore() {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-gray-50 w-350 pl-53">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       <Sidebar />
-      <main className="flex-1 p-8">
-        <h1 className="text-3xl font-bold mb-6 text-center">
+  <main className="flex-1 p-4 md:p-8 md:pl-56 pt-4 md:pt-0">
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">
           Minha Árvore Genealógica
         </h1>
         <div
+          id="tree"
           ref={treeRef}
-          className="border rounded-2xl bg-white shadow p-4 w-full h-[80vh] overflow-hidden"
+          className="border rounded-2xl bg-white shadow p-4 w-full h-[60vh] md:h-[80vh] overflow-auto"
         />
       </main>
     </div>
