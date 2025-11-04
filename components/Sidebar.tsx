@@ -43,6 +43,7 @@ export default function Sidebar() {
             height={32}
             className="rounded"
           />
+          <span className="font-semibold text-gray-700"> Trama</span>
         </div>
 
         {/* Ícones - lado direito */}

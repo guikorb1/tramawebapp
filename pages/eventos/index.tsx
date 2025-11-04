@@ -13,7 +13,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
         <div className="fixed top-0 left-0 right-0 h-14 bg-white shadow-sm z-50 flex items-center justify-between px-6">
           <div className="flex items-center gap-3">
             <Image src="/logo_trama.png" alt="Logo" width={32} height={32} />
-            <span className="font-semibold text-gray-700">Trama Família</span>
+            <span className="font-semibold text-gray-700">Trama</span>
           </div>
 
           <div className="flex items-center justify-center w-9 h-9 bg-gray-200 rounded-full">
@@ -22,7 +22,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         {/* Conteúdo principal */}
-        <div className="mt-16 p-4 sm:p-8 flex-1 flex flex-col items-center gap-6 overflow-auto">
+        <div className="mt-6 p-4 sm:p-8 flex-1 flex flex-col items-center gap-6 overflow-auto">
           <CalendarioEventos />
           <main className="w-full">{children}</main>
         </div>

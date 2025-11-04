@@ -91,7 +91,7 @@ export default function LoginForm() {
       </form>
       <div className="login-register">
         <span>Você não tem uma conta?</span>
-        <a href="/register" className="login-register-link">Registre-se</a>
+        <a href="#" className="login-register-link">Registre-se</a>
       </div>
     </div>
   );

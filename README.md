@@ -1,6 +1,7 @@
 ## 🏁 Getting Started
 
 > Siga este passo a passo para clonar e executar o projeto **Trama** (Ionic + React) no Android Studio.
+Para logar no aplicativo demo qualquer senha e user vai passar
 
 ### Passo a passo completo
 
@@ -25,7 +26,6 @@ npx cap sync android
 
 # 7️⃣ Abre o projeto diretamente no Android Studio
 npx cap open android
-
 
 #### Criando um projeto Ionic do zero e comandos adicionais vistos em aula
 
