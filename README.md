@@ -26,3 +26,32 @@ npx cap sync android
 # 7️⃣ Abre o projeto diretamente no Android Studio
 npx cap open android
 
+
+#### Criando um projeto Ionic do zero e comandos adicionais vistos em aula
+
+# Instala o Ionic CLI globalmente
+npm install -g @ionic/cli
+
+# Cria um novo projeto chamado 'myApp' com template 'tabs' usando React
+ionic start myApp tabs --type react
+
+# Entra na pasta do projeto
+cd myApp
+
+# Gera o build web
+npm run build
+
+# Adiciona plataforma Android
+npx cap add android
+
+# (Opcional) Adiciona plataforma iOS
+npx cap add ios
+
+# Copia os arquivos web build para as plataformas
+npx cap copy
+
+# Sincroniza dependências e plugins nativos
+npx cap sync
+
+# Abre o projeto no Android Studio (ou Xcode, se iOS)
+npx cap open android   # ou npx cap open ios
