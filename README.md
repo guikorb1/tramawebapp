@@ -14,6 +14,10 @@ cd tramawebapp
 
 # 3️⃣ Instala todas as dependências listadas no package.json
 npm install
+# Instala o Capacitor
+npm install @capacitor/android @capacitor/core
+# Instala o Ionic CLI globalmente
+npm install -g @ionic/cli
 
 # 4️⃣ (Opcional) Teste rápido no navegador para verificar se o app funciona
 ionic serve
@@ -28,9 +32,11 @@ npx cap sync android
 npx cap open android
 
 #### Criando um projeto Ionic do zero e comandos adicionais vistos em aula
+#para sincronizar ações futuras:
 
-# Instala o Ionic CLI globalmente
-npm install -g @ionic/cli
+npm run build
+npx cap sync
+
 
 # Cria um novo projeto chamado 'myApp' com template 'tabs' usando React
 ionic start myApp tabs --type react
